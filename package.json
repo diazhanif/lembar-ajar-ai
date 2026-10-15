@@ -1,0 +1,17 @@
+{
+  "name": "lembar-ajar-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Asisten belajar AI dari PDF dengan jawaban dan latihan berujukan halaman.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "pdfjs-dist": "^6.4.299"
+  }
+}

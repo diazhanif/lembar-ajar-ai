@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f4">
+  <meta name="description" content="Belajar dari PDF dengan jawaban AI yang menyertakan rujukan halaman, kartu hafalan, dan kuis. Dokumen dibaca di browser.">
+  <title>LembarAjar — belajar dari PDF</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="LembarAjar beranda">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="brand-name">lembar<span>ajar</span></span>
+      <span class="brand-ai">AI</span>
+    </a>
+    <div class="topbar-right">
+      <span class="privacy-pill"><span class="privacy-dot"></span>PDF diproses di perangkatmu</span>
+      <a class="about-link" href="#tentang">Tentang</a>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section id="emptyState" class="welcome-view" aria-labelledby="welcomeTitle">
+      <div class="welcome-copy">
+        <div class="eyebrow"><span class="sparkle" aria-hidden="true">✳</span> BELAJAR LEBIH AKTIF</div>
+        <h1 id="welcomeTitle">Materi menumpuk?<br><span>Bikin jadi paham.</span></h1>
+        <p class="intro">Masukkan PDF materi, lalu tanyakan apa saja. Jawaban AI dilengkapi rujukan halaman supaya kamu bisa cek sumbernya.</p>
+      </div>
+      <div id="dropZone" class="drop-zone" role="group" aria-label="Area unggah PDF">
+        <div class="upload-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M15 6.75h12.5L37 16.3v23.95a1.5 1.5 0 0 1-1.5 1.5h-20a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5Z" stroke="currentColor" stroke-width="1.8"/><path d="M27 7v10h9M24 33V22m0 0-4 4m4-4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h2>Mulai dari satu PDF</h2>
+        <p>Tarik file ke sini atau pilih dari perangkat</p>
+        <button id="chooseFileButton" class="button button-primary" type="button">Pilih file PDF <span aria-hidden="true">↗</span></button>
+        <div class="file-rules">PDF teks · maks. 12 MB · hingga 40 halaman</div>
+        <input id="fileInput" type="file" accept="application/pdf,.pdf" hidden>
+      </div>
+      <div id="loadStatus" class="load-status" role="status" aria-live="polite" hidden></div>
+      <div class="feature-row" aria-label="Fitur">
+        <div><span class="feature-number">01</span><span>Jawaban pakai rujukan</span></div>
+        <div><span class="feature-number">02</span><span>Kartu hafalan otomatis</span></div>
+        <div><span class="feature-number">03</span><span>Kuis dari materi sendiri</span></div>
+      </div>
+    </section>
+
+    <section id="workspace" class="workspace" hidden>
+      <div class="document-bar">
+        <div class="document-identity">
+          <span class="pdf-icon" aria-hidden="true">PDF</span>
+          <div class="document-titles"><strong id="documentName">Nama dokumen</strong><span id="documentMeta">0 halaman</span></div>
+        </div>
+        <button id="removeDocument" class="text-button" type="button" aria-label="Tutup dokumen">Tutup <span aria-hidden="true">×</span></button>
+      </div>
+      <div class="workspace-grid">
+        <section class="study-area" aria-label="Area belajar">
+          <div class="section-heading">
+            <div><div class="eyebrow">RUANG BELAJAR</div><h1>Apa yang ingin kamu pelajari?</h1></div>
+            <span class="session-label"><span></span>Sesi sementara</span>
+          </div>
+          <div class="mode-tabs" role="tablist" aria-label="Pilih mode belajar">
+            <button class="mode-tab active" type="button" role="tab" aria-selected="true" data-mode="ask"><span class="tab-icon">✳</span> Tanya AI</button>
+            <button class="mode-tab" type="button" role="tab" aria-selected="false" data-mode="flashcards"><span class="tab-icon">▤</span> Kartu hafalan</button>
+            <button class="mode-tab" type="button" role="tab" aria-selected="false" data-mode="quiz"><span class="tab-icon">✓</span> Kuis cepat</button>
+          </div>
+          <div id="studyContent" class="study-content"></div>
+          <div id="resultArea" class="result-area" aria-live="polite"></div>
+        </section>
+        <aside class="source-area" aria-labelledby="sourceHeading">
+          <div class="source-heading"><div><div class="eyebrow">SUMBER</div><h2 id="sourceHeading">Isi PDF</h2></div><span id="sourcePageCount" class="count-badge">0</span></div>
+          <p class="source-note">Teks diekstrak di browser. Dokumen asli tidak diunggah.</p>
+          <div id="pageList" class="page-list"></div>
+          <details class="privacy-details" id="tentang">
+            <summary><span aria-hidden="true">◈</span> Privasi & batasan</summary>
+            <p>PDF dibaca secara lokal di browser. Teks materi hanya dikirim ke penyedia AI saat kamu meminta jawaban, kartu, atau kuis. Jangan unggah dokumen rahasia. Cocokkan hasil dan nomor halaman dengan PDF asli.</p>
+          </details>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><span>Belajar dengan lebih sadar.</span><span>LembarAjar AI <span aria-hidden="true">·</span> 2026</span></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
